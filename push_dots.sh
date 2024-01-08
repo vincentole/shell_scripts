@@ -13,4 +13,4 @@ push_folder nvim ~/.config/nvim
 push_folder kitty ~/.config/kitty
 push_folder fish ~/.config/fish
 push_folder helix ~/.config/helix
-push_folder "shell scripts" ~/.shell_scripts
+push_folder shell_scripts ~/.shell_scripts
