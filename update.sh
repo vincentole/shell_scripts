@@ -25,6 +25,23 @@ do
     fi
 done
 
-echo -e "\nUpdating and upgrading system packages..."
+echo -e "\n\nUpdating and upgrading system packages..."
 sudo apt update
 sudo apt upgrade -y
+
+
+echo -e "\n\nUpdating global npm packages to latest version..."
+outdated_packages=$(npm outdated -g | tail -n +2 | awk '{print $1}')
+
+if [ -z "$outdated_packages" ]; then
+    echo "All packages are up to date."
+else
+    echo "$outdated_packages" | while read -r package; do
+        echo "Updating $package..."
+        npm install -g "$package"
+    done
+fi
+
+
+echo -e "\n\nUpdating cargo packages to latest version..."
+cargo install-update -a
